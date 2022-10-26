@@ -1,0 +1,15 @@
+services:
+  - name:  HNG
+    type:  web
+    env:   python
+    repo:  https://github.com/Stonetech66/HNG-Task1
+    plan: free
+    buildCommand: ./render-build.sh
+    startCommand: "gunicorn HNG_Task1.wsgi:application"
+    envVars:
+      - key:  DJANGO_SETTINGS_MODULE
+        value:   HNG_Task1.settings
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: WEB_CONCURRENCY
+        value: 2
