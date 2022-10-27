@@ -25,10 +25,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 DEBUG = config('DEBUG', cast=bool)
-ALLOWED_HOSTS = []
-host=os.environ.get('RENDER_EXTERNAL_URL')
-if host:
-    ALLOWED_HOSTS.append(host)
+ALLOWED_HOSTS = ['hng.onrender.com']
+
 
 
 
