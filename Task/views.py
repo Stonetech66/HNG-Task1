@@ -14,9 +14,10 @@ class View(APIView):
 class OperationView(APIView):
    serializer_class= OperationSerializer
    
+   
    def post(self):
-      serializer= OperationSerializer
-      if serializers.is_valid():
+      serializer= self.serializer_class(data=self.request.data)
+      if serializer.is_valid():
          x= serializers.validated_data['x']
          y= serializers.validated_data['y']
          op= serializers.validated_data['operation_type']
