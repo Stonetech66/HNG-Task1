@@ -23,14 +23,9 @@ class OperationSerializer(serializers.Serializer):
 
       response = openai.Completion.create(
       model="text-davinci-002",
-      prompt=f"Q: {value} ",
+      prompt=f"{value}",
       temperature=0,
       max_tokens=100,
-      top_p=1,
-      frequency_penalty=0,
-      presence_penalty=0,
-      stop=["\n"]
 ) 
-      print(response) 
-      return {'response':response, 'op':value} 
+      return {'response':response['choices'][0]['text'], 'op':value} 
      return value 
