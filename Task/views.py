@@ -16,11 +16,11 @@ class OperationView(APIView):
    
    
    def post(self, *args, **kwargs):
-      serializers= self.serializer_class(data=self.request.data)
-      if serializers.is_valid():
-         x= serializers.validated_data['x']
-         y= serializers.validated_data['y']
-         op= serializers.validated_data['operation_type']
+      serializer= self.serializer_class(data=self.request.data)
+      if serializer.is_valid():
+         x= serializer.validated_data['x']
+         y= serializer.validated_data['y']
+         op= serializer.validated_data['operation_type']
          if op == 'addition':
             result= x + y
             op_type= 'addition' 
