@@ -27,7 +27,7 @@ class OperationView(APIView):
 
          elif op == 'subtraction':
             result= x - y
-            op_type= 'addition' 
+            op_type= 'subtraction' 
          elif op == 'multiplication':
             result= x * y
             op_type= 'multiplication'
