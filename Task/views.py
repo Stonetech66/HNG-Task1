@@ -17,7 +17,7 @@ class OperationView(APIView):
    
    def post(self, *args, **kwargs):
       serializer= self.serializer_class(data=self.request.data)
-      if serializer.is_valid():
+      if serializer.is_valid(raise_exception=True):
          x= serializer.validated_data['x']
          y= serializer.validated_data['y']
          op= serializer.validated_data['operation_type']
