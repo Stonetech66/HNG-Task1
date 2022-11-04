@@ -16,8 +16,8 @@ class OperationView(APIView):
    
    
    def post(self, *args, **kwargs):
-      serializer= self.serializer_class(data=self.request.data)
-      if serializer.is_valid():
+      serializers= self.serializer_class(data=self.request.data)
+      if serializers.is_valid():
          x= serializers.validated_data['x']
          y= serializers.validated_data['y']
          op= serializers.validated_data['operation_type']
@@ -31,4 +31,7 @@ class OperationView(APIView):
          elif op == 'multiplication':
             result= x * y
             op_type= 'multiplication'
+         else:
+            result=op
+            op_type=op
          return Response({'slackUsername':'Livingstone', 'result':result, 'operation_type': op_type}) 
