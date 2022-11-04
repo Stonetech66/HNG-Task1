@@ -31,7 +31,17 @@ class OperationView(APIView):
          elif op == 'multiplication':
             result= x * y
             op_type= 'multiplication'
-         else:
-            result=op
-            op_type=op
+         elif type(op) == dict:
+            F=['addition', 'plus', 'add', '+', '-', 'minus', 'subtract', 'subtraction', 'multiply', 'multiplication', '*'] 
+            for i in F:
+               if i in op['op']:
+                  if i== 'add' or 'addition' or 'plus' or '+':
+                     result=op['response'] 
+                     op_type='addition' 
+                  elif i== 'minus' or 'subtraction' or 'subtract' or '-':
+                     result=op['response'] 
+                     op_type='subtraction' 
+                  elif i== '*' or 'multiplication' or 'multiply':
+                     result=op['response'] 
+                     op_type='multiplication' 
          return Response({'slackUsername':'Livingstone', 'result':result, 'operation_type': op_type}) 
