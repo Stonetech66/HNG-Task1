@@ -56,13 +56,13 @@ class OperationView(APIView):
             for i in F:
                if i in op:
                   if i== 'add' or 'addition' or 'plus' or '+':
-                     result=response['choices'][0]['texts'] 
+                     result=response['choices'][0]['text'] 
                      op_type='addition' 
                   elif i== 'minus' or 'subtraction' or 'subtract' or '-':
                      result=response['choices'][0]['text'] 
                      op_type='subtraction' 
                   elif i== '*' or 'multiplication' or 'multiply':
-                     result=response['choices'][0]['texts'] 
+                     result=response['choices'][0]['text'] 
                      op_type='multiplication' 
                   
          return Response({'slackUsername':'Livingstone', 'result':result, 'operation_type': op_type}) 
