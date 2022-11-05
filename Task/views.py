@@ -55,13 +55,13 @@ class OperationView(APIView):
             F=['addition', 'plus', 'add', '+', '-', 'minus', 'subtract', 'subtraction', 'multiply', 'multiplication', '*'] 
             for i in F:
                if i in op:
-                  if i== 'add' or 'addition' or 'plus' or '+':
+                  if i== 'add' or i== 'addition' or i== 'plus' or i== '+':
                      result=response['choices'][0]['text'] 
                      op_type='addition' 
-                  elif i== 'minus' or 'subtraction' or 'subtract' or '-':
+                  elif i== 'minus' or i== 'subtraction' or i== 'subtract' or i== '-':
                      result=response['choices'][0]['text'] 
                      op_type='subtraction' 
-                  elif i== '*' or 'multiplication' or 'multiply':
+                  elif i== '*' or i== 'multiplication' or i== 'multiply':
                      result=response['choices'][0]['text'] 
                      op_type='multiplication' 
                   
