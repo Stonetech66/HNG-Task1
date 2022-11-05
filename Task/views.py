@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import OperationSerializer 
+from decouple import config 
 
 class View(APIView):
     def get(self, *args, **kwargs):
@@ -12,15 +13,17 @@ class View(APIView):
 
 
 class OperationView(APIView):
-   serializer_class= OperationSerializer
    
    
-   def post(self, *args, **kwargs):
-         serializer= self.serializer_class(data=self.request.data)
-      
-         x= serializer.get('x') 
-         y= serializer.get('y') 
-         op= serializer.get('operation_type') 
+   
+   def post(self, request, *args, **kwargs):
+         
+         try:
+           x= request.data.get('x') 
+           y= request.data.get('y') 
+         except:
+             pass
+         op= request.data.get('operation_type') 
          if op == 'addition':
             result= x + y
             op_type= 'addition' 
@@ -44,6 +47,9 @@ class OperationView(APIView):
             prompt=op,
             temperature=0,
             max_tokens=100,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
             ) 
 
             F=['addition', 'plus', 'add', '+', '-', 'minus', 'subtract', 'subtraction', 'multiply', 'multiplication', '*'] 
