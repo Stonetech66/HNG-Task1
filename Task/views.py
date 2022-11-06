@@ -44,7 +44,7 @@ class OperationView(APIView):
 
             response = openai.Completion.create(
             model="text-davinci-002",
-            prompt=op,
+            prompt=f"they are numbers {op}", 
             temperature=0,
             max_tokens=100,
             top_p=1,
